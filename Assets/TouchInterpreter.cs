@@ -7,7 +7,7 @@ using SimpleJSON;
 public class TouchInterpreter : MonoBehaviour {
 
 	public UDPReceive receiver;
-	List<Point> myList = new List<Point>();
+	List<Vector2> myList = new List<Vector2>();
 
 	// Use this for initialization
 	void Start () {
@@ -27,7 +27,7 @@ public class TouchInterpreter : MonoBehaviour {
 				foreach (object p in points) {
 					JSONNode point = JSON.Parse (p.ToString());
 				//	Debug.Log (point.AsArray[0].AsFloat + " " + point.AsArray[1].AsFloat);
-					myList.Add (new Point (point.AsArray [0].AsFloat, point.AsArray [1].AsFloat));
+					myList.Add (new Vector2 (point.AsArray [0].AsFloat, point.AsArray [1].AsFloat));
 				}
 			//	foreach (var point in N["cursors"].AsArray[0].AsArray) {
 			//		Debug.Log (point[0] + "," + point[1]);
@@ -37,25 +37,28 @@ public class TouchInterpreter : MonoBehaviour {
 		}
 	}
 
+	public List<Vector2> getTouchPoints() {
+		return myList;
+	}
 
-	public Point getAverageTouchPoint() {
+	public Vector2 getAverageTouchPoint() {
 		float sumX = 0;
 		float sumY = 0;
-		foreach (Point p in myList) {
+		foreach (Vector2 p in myList) {
 			sumX += p.x;
 			sumY += p.y;
 		}
-		Point result = new Point (sumX / myList.Count, sumY / myList.Count);
+		Vector2 result = new Vector2 (sumX / myList.Count, sumY / myList.Count);
 		Debug.Log ("Average hit is: [" + result.x + ", " + result.y + "]");
 		return result;
 	}
 
-	public Point getScaledAverageTouchPoint () {
+	public Vector2 getScaledAverageTouchPoint () {
 		return scalePoint (getAverageTouchPoint ());
 	}
 
 	// Scales to [-5 ... 5]
-	public Point scalePoint(Point p) {
-		return new Point ((p.x - 0.5f) * 10, p.y);
+	public Vector2 scalePoint(Vector2 p) {
+		return new Vector2 ((p.x - 0.5f) * 10, p.y);
 	}
 }

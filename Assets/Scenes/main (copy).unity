@@ -112,90 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &353320098
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 353320099}
-  m_Layer: 0
-  m_Name: SodaLocation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &353320099
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 353320098}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.5, y: 0.9580177, z: 3.634604}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1048714757
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1048714758}
-  m_Layer: 0
-  m_Name: SnackLocation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1048714758
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1048714757}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.9580177, z: 3.634604}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1094007725
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1094007726}
-  m_Layer: 0
-  m_Name: CoffeeLocation
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1094007726
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1094007725}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.5, y: 0.9580177, z: 3.634604}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1492932137
 GameObject:
   m_ObjectHideFlags: 0
@@ -299,6 +215,16 @@ Prefab:
     - target: {fileID: 4317780280220306, guid: 0058fbd2385bc49ddb3aa7e1ff20454a, type: 2}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 198642319927140190, guid: 0058fbd2385bc49ddb3aa7e1ff20454a,
+        type: 2}
+      propertyPath: ShapeModule.type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198642319927140190, guid: 0058fbd2385bc49ddb3aa7e1ff20454a,
+        type: 2}
+      propertyPath: randomSeed
+      value: 558928173
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0058fbd2385bc49ddb3aa7e1ff20454a, type: 2}
@@ -418,7 +344,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2088974238}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -472,7 +398,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2088974238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.029, y: 1, z: 5}
+  m_LocalPosition: {x: -0.029, y: 1, z: 0}
   m_LocalScale: {x: 22, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -491,19 +417,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraBoundaryLeft: -10
   cameraBoundaryRight: 10
-  sodaLocation: {fileID: 353320098}
-  coffeeLocation: {fileID: 1094007725}
-  snackLocation: {fileID: 1048714757}
-  explosion: {fileID: 1502748152361064, guid: 0058fbd2385bc49ddb3aa7e1ff20454a, type: 2}
   soda: {fileID: 1560028659472670, guid: 9054d89b92f8d4aeb93e9548555c0020, type: 2}
   snack: {fileID: 1127946339714760, guid: 0b3a14dd0c19b4c149b68b01dc05a9c6, type: 2}
   coffee: {fileID: 1301750961920704, guid: 0cd92cc4641f344cb9de28a8fc96abd5, type: 2}
-  touchInput: {fileID: 2088974245}
+  gravitySpeed: 3.16
+  centreBounds: 0.08
   itemZCoord: -2
-  coffeeMinSelection: {x: 0, y: 0}
-  coffeeMaxSelection: {x: 0, y: 0}
-  sodaMinSelection: {x: 0, y: 0}
-  sodaMaxSelection: {x: 0, y: 0}
+  touchInput: {fileID: 2088974245}
 --- !u!114 &2088974244
 MonoBehaviour:
   m_ObjectHideFlags: 0
