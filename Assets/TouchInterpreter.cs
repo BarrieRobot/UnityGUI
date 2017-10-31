@@ -23,11 +23,13 @@ public class TouchInterpreter : MonoBehaviour {
 				myList.Clear ();
 				var N = JSON.Parse(packet);
 				//Debug.Log (N ["cursors"].AsArray [0].AsArray);
-				JSONArray points = N ["cursors"].AsArray;
-				foreach (object p in points) {
-					JSONNode point = JSON.Parse (p.ToString());
-				//	Debug.Log (point.AsArray[0].AsFloat + " " + point.AsArray[1].AsFloat);
-					myList.Add (new Vector2 (point.AsArray [0].AsFloat, point.AsArray [1].AsFloat));
+				if (N != null) {
+					JSONArray points = N ["cursors"].AsArray;
+					foreach (object p in points) {
+						JSONNode point = JSON.Parse (p.ToString ());
+						//	Debug.Log (point.AsArray[0].AsFloat + " " + point.AsArray[1].AsFloat);
+						myList.Add (new Vector2 (point.AsArray [0].AsFloat, point.AsArray [1].AsFloat));
+					}
 				}
 			//	foreach (var point in N["cursors"].AsArray[0].AsArray) {
 			//		Debug.Log (point[0] + "," + point[1]);

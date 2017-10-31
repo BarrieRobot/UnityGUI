@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Collections;
+using UnityEngine.SceneManagement;
 
 public class CartegoriesChoice : MonoBehaviour {
 
@@ -26,17 +27,20 @@ public class CartegoriesChoice : MonoBehaviour {
 
 	public float itemZCoord = -1;
 
-	[SerializeField]
 	public Vector2 coffeeMinSelection;
 	public Vector2 coffeeMaxSelection;
 	public Vector2 sodaMinSelection;
 	public Vector2 sodaMaxSelection;
 
+	private bool itemChosen = false;
+	//private AssetBundle myLoadedAssetBundle;
+
 	// Use this for initialization
 	void Start () {
 		spawnedSoda = Instantiate (soda, sodaLocation.transform.position, Quaternion.identity);
 		spawnedCoffee = Instantiate (coffee, coffeeLocation.transform.position, Quaternion.identity);
-		spawnedSnack = Instantiate (snack, snackLocation.transform.position, Quaternion.identity);
+		//spawnedSnack = Instantiate (snack, snackLocation.transform.position, Quaternion.identity);
+		CurrentCategory.category = ECategory.NONE;
 	}
 
 
@@ -44,29 +48,60 @@ public class CartegoriesChoice : MonoBehaviour {
 	float time = 5;
 	// Update is called once per frame
 	void Update () {
-		timer += Time.deltaTime;
+		/*timer += Time.deltaTime;
 		if (timer > time) {
 			timer = 0;
 			Destroy (spawnedCoffee);
 			Instantiate (explosion, coffeeLocation.transform.position, Quaternion.identity);
-		}
+		}*/
 
-		List<Vector2> touches = touchInput.getTouchPoints ();
-		foreach (Vector2 touch in touches) {
+		//List<Vector2> touches = touchInput.getTouchPoints ();
+		//if (!itemChosen)
+		/*foreach (Vector2 touch in touches) {
 			if (touch.x > coffeeMinSelection.x && touch.x < coffeeMaxSelection.x
 			    && touch.y > coffeeMinSelection.y && touch.y < coffeeMaxSelection.y) {
 
 				Destroy (spawnedCoffee);
 				Instantiate (explosion, coffeeLocation.transform.position, Quaternion.identity);
-
+				//StartCoroutine ("ChooseItem");
+				return;
 			} else if (touch.x > sodaMinSelection.x && touch.x < sodaMaxSelection.x
 				&& touch.y > sodaMinSelection.y && touch.y < sodaMaxSelection.y){
 
 				Destroy (spawnedSoda);
 				Instantiate (explosion, sodaLocation.transform.position, Quaternion.identity);
-
+				//StartCoroutine ("ChooseItem");
+				return;
 			}
+		}*/
+	}
+
+	public void explodeItem(ECategory cat) {
+		switch (cat) {
+		case ECategory.COFFEE:
+			Destroy (spawnedCoffee);
+			Instantiate (explosion, coffeeLocation.transform.position, Quaternion.identity);
+			break;
+
+		case ECategory.SODA:
+
+			Destroy (spawnedSoda);
+			Instantiate (explosion, sodaLocation.transform.position, Quaternion.identity);
+			//StartCoroutine ("ChooseItem");
+			break;
 		}
+		StartCoroutine ("LoadNextScene");
+	}
+
+	IEnumerator ChooseItem() {
+		itemChosen = true;
+		yield return new WaitForSeconds (0.5f);
+		SceneManager.LoadScene("main2", LoadSceneMode.Single);	
+	}
+
+	IEnumerator LoadNextScene() {
+		yield return new WaitForSeconds (2f);
+		SceneManager.LoadScene("main2", LoadSceneMode.Single);	
 	}
 
 	/*

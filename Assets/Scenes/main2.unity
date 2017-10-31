@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 1277253902}
   m_IndirectSpecularColor: {r: 0.4465782, g: 0.49641246, b: 0.5748167, a: 1}
 --- !u!157 &3
 LightmapSettings:
@@ -112,28 +112,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &1492932137
+--- !u!1 &1277253901
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 1492932139}
-  - component: {fileID: 1492932138}
+  - component: {fileID: 1277253903}
+  - component: {fileID: 1277253902}
   m_Layer: 0
-  m_Name: Directional Light
+  m_Name: Directional Light (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!108 &1492932138
+--- !u!108 &1277253902
 Light:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1492932137}
+  m_GameObject: {fileID: 1277253901}
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
@@ -164,71 +164,19 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!4 &1492932139
+--- !u!4 &1277253903
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1492932137}
+  m_GameObject: {fileID: 1277253901}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &1574694565
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4317780280220306, guid: 0058fbd2385bc49ddb3aa7e1ff20454a, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -3.7656941
-      objectReference: {fileID: 0}
-    - target: {fileID: 4317780280220306, guid: 0058fbd2385bc49ddb3aa7e1ff20454a, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -7.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 4317780280220306, guid: 0058fbd2385bc49ddb3aa7e1ff20454a, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4317780280220306, guid: 0058fbd2385bc49ddb3aa7e1ff20454a, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4317780280220306, guid: 0058fbd2385bc49ddb3aa7e1ff20454a, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4317780280220306, guid: 0058fbd2385bc49ddb3aa7e1ff20454a, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4317780280220306, guid: 0058fbd2385bc49ddb3aa7e1ff20454a, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071068
-      objectReference: {fileID: 0}
-    - target: {fileID: 4317780280220306, guid: 0058fbd2385bc49ddb3aa7e1ff20454a, type: 2}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 198642319927140190, guid: 0058fbd2385bc49ddb3aa7e1ff20454a,
-        type: 2}
-      propertyPath: ShapeModule.type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 198642319927140190, guid: 0058fbd2385bc49ddb3aa7e1ff20454a,
-        type: 2}
-      propertyPath: randomSeed
-      value: 558928173
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 0058fbd2385bc49ddb3aa7e1ff20454a, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &2078983085
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,9 +276,10 @@ GameObject:
   - component: {fileID: 2088974241}
   - component: {fileID: 2088974240}
   - component: {fileID: 2088974239}
-  - component: {fileID: 2088974243}
   - component: {fileID: 2088974245}
   - component: {fileID: 2088974244}
+  - component: {fileID: 2088974243}
+  - component: {fileID: 2088974246}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -352,7 +301,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 482ebe460e155cf48a9090f7b95141c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -402,7 +351,7 @@ Transform:
   m_LocalScale: {x: 22, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2088974243
 MonoBehaviour:
@@ -412,18 +361,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 2088974238}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b9380bb6876340858cb9763a110a349, type: 3}
+  m_Script: {fileID: 11500000, guid: e009485311fb44fdb9de68ca3f87d344, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraBoundaryLeft: -10
-  cameraBoundaryRight: 10
-  soda: {fileID: 1560028659472670, guid: 9054d89b92f8d4aeb93e9548555c0020, type: 2}
-  snack: {fileID: 1127946339714760, guid: 0b3a14dd0c19b4c149b68b01dc05a9c6, type: 2}
-  coffee: {fileID: 1301750961920704, guid: 0cd92cc4641f344cb9de28a8fc96abd5, type: 2}
-  gravitySpeed: 3.16
-  centreBounds: 0.08
-  itemZCoord: -2
+  cameraBoundaryLeft: -7.5
+  cameraBoundaryRight: 7.5
+  sodas: []
+  coffees:
+  - {fileID: 1002812519567540, guid: 03c565a78f44e4465bf8ce0dbcaab81f, type: 2}
+  - {fileID: 1472846290153284, guid: 235782a68e2be4d88800c1282aac48b7, type: 2}
+  - {fileID: 1230296557175100, guid: 07d60ba33d3af474daefd67a6b7381be, type: 2}
+  items: []
+  gravitySpeed: 7.46
+  centreBounds: 1
+  itemZCoord: -1
   touchInput: {fileID: 2088974245}
+  moveSpeed: 4.7
+  resetToCategoriesTime: 30
+  confirmAreaMin: {x: 0.309302, y: 0.022727}
+  confirmAreaMax: {x: 0.902326, y: 0.981818}
+  leftArrowMin: {x: 0.011628, y: 0.031818}
+  leftArrowMax: {x: 0.267442, y: 0.709091}
+  rightarrowMin: {x: 0.690698, y: 0.022727}
+  rightArrowMax: {x: 0.986046, y: 0.695455}
 --- !u!114 &2088974244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,3 +409,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   receiver: {fileID: 2088974244}
+--- !u!114 &2088974246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2088974238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f6a0dda7e3c480bb05c161976c74a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchInput: {fileID: 2088974245}
+  coffeeMinSelection: {x: 0.402326, y: 0.809091}
+  coffeeMaxSelection: {x: 0.572093, y: 0.981818}
+  sodaMinSelection: {x: 0, y: 0}
+  sodaMaxSelection: {x: 0, y: 0}
