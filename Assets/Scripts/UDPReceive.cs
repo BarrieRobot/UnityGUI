@@ -8,6 +8,8 @@ using System.Net.Sockets;
 using System.Threading;
 using UnityEngine.VR;
 
+using SimpleJSON;
+
 public class UDPReceive : MonoBehaviour {
 
 	private Thread receiveThread;
@@ -19,6 +21,8 @@ public class UDPReceive : MonoBehaviour {
 
 	// infos
 	public string lastReceivedUDPPacket="";
+	public int lastReceivedRFIDID = 0;
+	private JSONArray lastReceivedCursors;
 
 	// start from shell
 	private static void Main() {
@@ -70,15 +74,27 @@ public class UDPReceive : MonoBehaviour {
 					return;
 				}
 				string text = Encoding.UTF8.GetString(data);
-
-				//print(">> " + text);
 				lastReceivedUDPPacket=text;
 				//Debug.Log("Received: " + lastReceivedUDPPacket);
 			}
 			catch (Exception err) {
 				Debug.LogException (err);
 			}
+			ParseData ();
 			//Thread.Sleep (100);
+		}
+	}
+
+	void ParseData() {
+		JSONNode data = JSON.Parse(lastReceivedUDPPacket);
+		if (data != null) {
+			if (data ["cursors"] != null) {
+				lastReceivedCursors = data ["cursors"].AsArray;
+			} else if (data ["rfid"] != null) {
+				lastReceivedRFIDID = data ["rfid"].AsInt;
+			} else {
+				Debug.LogError ("Invalid data received: " + data);
+			}
 		}
 	}
 
@@ -91,6 +107,9 @@ public class UDPReceive : MonoBehaviour {
 		client.Close(); 
 	} 
 
+	public JSONArray getLastCursors() {
+		return lastReceivedCursors;
+	}
 
 	// getLatestUDPPacket
 	// cleans up the rest
