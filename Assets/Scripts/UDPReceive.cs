@@ -12,6 +12,8 @@ using SimpleJSON;
 
 public class UDPReceive : MonoBehaviour {
 
+	public float resetRFIDIDTimeout;
+
 	private Thread receiveThread;
 	private UdpClient client;
 	private bool running = true;
@@ -21,9 +23,10 @@ public class UDPReceive : MonoBehaviour {
 
 	// infos
 	public string lastReceivedUDPPacket="";
-	public int lastReceivedRFIDID = 0;
+	private int lastReceivedRFIDID = -1;
 	private JSONArray lastReceivedCursors;
 
+	private float rfidTimer = 0;
 	// start from shell
 	private static void Main() {
 		UDPReceive receiveObj = new UDPReceive();
@@ -41,13 +44,16 @@ public class UDPReceive : MonoBehaviour {
 		init();
 	}
 
+	public void Update() {
+		rfidTimer += Time.deltaTime;
+		if (rfidTimer > resetRFIDIDTimeout) {
+			rfidTimer = 0;
+			lastReceivedRFIDID = -1;
+		}
+	}
+
 	// init
 	private void init() {
-		//print("UDPSend.init()");
-
-		// define port
-		port = 5005;
-
 		// status
 		//print(" \t to 127.0.0.1 : "+port);
 		//print("Test-Sending to this Port: nc -u 127.0.0.1  "+port+"");
@@ -88,10 +94,12 @@ public class UDPReceive : MonoBehaviour {
 	void ParseData() {
 		JSONNode data = JSON.Parse(lastReceivedUDPPacket);
 		if (data != null) {
+			Debug.Log ("data received");
 			if (data ["cursors"] != null) {
 				lastReceivedCursors = data ["cursors"].AsArray;
 			} else if (data ["rfid"] != null) {
 				lastReceivedRFIDID = data ["rfid"].AsInt;
+				Debug.Log ("RFID data received: " + lastReceivedRFIDID);
 			} else {
 				Debug.LogError ("Invalid data received: " + data);
 			}
@@ -109,6 +117,10 @@ public class UDPReceive : MonoBehaviour {
 
 	public JSONArray getLastCursors() {
 		return lastReceivedCursors;
+	}
+
+	public int getLastReceivedRFID() {
+		return lastReceivedRFIDID;
 	}
 
 	// getLatestUDPPacket

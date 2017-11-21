@@ -15,6 +15,7 @@ public class StateManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		Debug.Log ("update");
 		ReceiveStateChange ();
 		HandleState ();
 	}
@@ -25,30 +26,24 @@ public class StateManager : MonoBehaviour {
 			NFCScanLockedOverlay.SetActive (true);
 			break;
 		case State.SELECTING:
+			Debug.Log ("disable panel");
 			NFCScanLockedOverlay.SetActive (false);
 			break;
 		}
 	}
 
+	// Checks for RFID message
 	void ReceiveStateChange() {
 		if (udpreceiver != null) {
-			string packet = udpreceiver.getLatestUDPPacket ();
-			if (packet != null) {
-				var N = JSON.Parse(packet);
+			Debug.Log ("checking id");
+			int rfidid = udpreceiver.getLastReceivedRFID ();
+			Debug.Log ("checking id: " + rfidid);
 
-				if (N != null && N ["state"] != null) { 
-					//TODO better check for message
-					int state = N ["state"].AsInt;
-					switch(state) {
-					case (int)State.WAIT_FOR_NFC:
-						CurrentState.currentState = State.WAIT_FOR_NFC;
-						break;
-					case (int)State.SELECTING: 
-						CurrentState.currentState = State.SELECTING;
-						break;
-						//	Debug.Log (point.AsArray[0].AsFloat + " " + point.AsArray[1].AsFloat);
-					}
-				}
+			if (rfidid != null && rfidid != -1) {
+				Debug.Log ("set selecting");
+				CurrentState.currentState = State.SELECTING;
+			} else {
+				CurrentState.currentState = State.WAIT_FOR_NFC;
 			}
 		}
 	}
